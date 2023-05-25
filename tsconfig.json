@@ -19,6 +19,7 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
+    "noImplicitAny": true,
     "lib": [
       "esnext",
       "dom"
