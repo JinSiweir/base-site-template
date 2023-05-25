@@ -1,6 +1,6 @@
 {
-  "name": "base-site-admin",
-  "version": "0.0.0",
+  "name": "base-site-template",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vite --open --mode development",
