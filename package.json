@@ -48,12 +48,10 @@
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "prettier --write",
-      "pnpm lint:fix",
-      "git add ."
+      "pnpm run lint:fix"
     ],
     "*.{html,vue,css,scss,less}": [
-      "pnpm stylelint:fix",
-      "git add ."
+      "pnpm run stylelint:fix"
     ]
   }
 }
