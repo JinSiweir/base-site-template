@@ -34,11 +34,35 @@ module.exports = {
     'no-continue': 'off',
     'no-restricted-syntax': 'off',
     'no-plusplus': 'off',
+    'no-param-reassign': 'off',
+    'no-shadow': 'off',
+    'guard-for-in': 'off',
 
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
+
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+
+    'no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-types': 'off',
+
+    'class-methods-use-this': 'off', // 因为AxiosCancel必须实例化而能静态化所以加的规则，如果有办法解决可以取消
 
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
