@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
-import type { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
+import type { AxiosInstance } from 'axios';
 import isString from 'lodash/isString';
 import merge from 'lodash/merge';
 
-// import { MessagePlugin } from 'tdesign-vue-next';
 import { ContentTypeEnum } from '@/constants';
-// import router from '@/router';
 import { useUserStore } from '@/store';
 
 import { VAxios } from './Axios';
@@ -26,7 +24,7 @@ const transform: AxiosTransform = {
 
     // 如果204无内容直接返回
     const method = res.config.method?.toLowerCase();
-    if (res.status === 204 || method === 'put' || method === 'patch') {
+    if (res.status === 204 && ['put', 'patch', 'delete'].includes(method)) {
       return res;
     }
 
@@ -125,7 +123,7 @@ const transform: AxiosTransform = {
         ? `${options.authenticationScheme} ${token}`
         : token;
     }
-    return config as InternalAxiosRequestConfig;
+    return config;
   },
 
   // 响应拦截器处理
@@ -207,7 +205,9 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
           formatDate: true,
           // 是否加入时间戳
           joinTime: true,
-          // 忽略重复请求
+          // 是否忽略请求取消令牌
+          // 如果启用，则重复请求时不进行处理
+          // 如果禁用，则重复请求时会取消当前请求
           ignoreRepeatRequest: true,
           // 是否携带token
           withToken: true,
